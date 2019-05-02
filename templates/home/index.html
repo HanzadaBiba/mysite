@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Главная
+{% endblock %}
+{% block content %}
+
+<header id="header"><!--header-->
+
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo ">
+	<a href="{% url 'home:home' %}"><img src="{% static 'images/home/logo.png' %}" alt="" width="320"/></a>
+										</div>
+
+					</div>
+                    <div class="col-sm-8">
+						<div class="logo pull-left">
+					<h1>PETRO RETAIL PHONEBOOK</h1>
+                        </div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div><!--/header-middle-->
+
+
+	</header><!--/header-->
+    <br>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Структуры</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							{% for unit in units %}
+                            <div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href=""><span class="pull-right">({{ unit.departaments_set.count }})</span>{{ unit.name }}</a></h4>
+								</div>
+							</div>
+
+							{% endfor %}
+
+
+						</div><!--/category-products-->
+
+
+					</div>
+				</div>
+
+				<div class="col-sm-9 padding-right">
+                    <h2 class="title text-center">Структуры</h2>
+<div class="beststudent">
+
+                <ul>
+                {% for unit in units %}
+<li><a href="{{ unit.get_absolute_url }}">{{ unit }}</a></li>
+
+
+{% endfor %}
+
+                 </ul>
+</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}
+
